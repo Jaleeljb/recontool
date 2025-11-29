@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>About - OSINT Reconnaissance Tool</title>
+    <link rel="icon" type="image/png"
+        href="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* REUSING CORE STYLES FROM INDEX.HTML FOR CONSISTENCY */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HEADER STYLES */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: invert(1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            color: #0f0;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* BUTTONS */
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* VIDEO SECTION */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 */
+            height: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #fff;
+            margin-bottom: 40px;
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: #888;
+        }
+
+        /* CONTENT CARDS */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #fff;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #0f0;
+        }
+
+        /* GRID FOR MODULES */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .module-item {
+            border: 1px solid #555;
+            padding: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .module-item:hover {
+            border-color: #0f0;
+        }
+
+        .module-title {
+            color: #0f0;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* LEGAL & WARNINGS */
+        .legal-block {
+            border: 2px solid #ff5459;
+            background: rgba(255, 84, 89, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .legal-title {
+            color: #ff5459;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media screen and (max-width: 767px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars-container"></div>
+
+    <div class="container">
+        <a href="index.html" class="nav-btn">
+            <i data-lucide="arrow-left"></i> RETURN TO SCANNER
+        </a>
+
+        <header>
+            <div class="header-content">
+                <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png"
+                    alt="OSINT Logo" class="app-logo">
+                <div>
+                    <h1>OPERATIONAL PLAYBOOK</h1>
+                    <p>Strategic Guide & Master Manual</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="card">
+            <h3>MISSION BRIEFING</h3>
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <i data-lucide="play-circle" style="width: 64px; height: 64px; margin-bottom: 15px;"></i>
+                    <p>APPLICATION OVERVIEW VIDEO</p>
+                    <small>Integrate your walkthrough video here</small>
+                </div>
+            </div>
+            <p><strong>MISSION OVERVIEW:</strong> We have built a single-interface intelligence aggregation system that
+                transforms raw domain data into actionable reconnaissance intelligence. [cite_start]This isn't just
+                another WHOIS lookup tool—this is an orchestrated intelligence gathering machine [cite: 17-19].</p>
+        </div>
+
+        <h2>1. MISSION OVERVIEW</h2>
+        <div class="card">
+            <p><strong>THE VISION:</strong></p>
+            <ul>
+                [cite_start]<li>Input: One target domain or IP address [cite: 21]</li>
+                [cite_start]<li>Process: Simultaneous deep-dive analysis across 11 specialized modules [cite: 22]</li>
+                [cite_start]<li>Output: Comprehensive, exportable intelligence report [cite: 23]</li>
+                [cite_start]<li>Impact: What would take 30 minutes across multiple tools, now happens in seconds [cite:
+                    24]</li>
+            </ul>
+            <br>
+            <p><strong>WHO SHOULD USE THIS?</strong></p>
+            <ul>
+                [cite_start]<li>Security Researchers & Cybersecurity Analysts [cite: 26-27]</li>
+                [cite_start]<li>Penetration Testers (Pre-engagement Recon) [cite: 28]</li>
+                [cite_start]<li>Business Development & Compliance Officers [cite: 29]</li>
+                [cite_start]<li>CTF Players [cite: 30]</li>
+            </ul>
+        </div>
+
+        <h2>2. CORE INTELLIGENCE MODULES</h2>
+        <div class="modules-grid">
+            <div class="module-item">
+                <div class="module-title">01. DNS INTELLIGENCE</div>
+                <p>Reveals mail server infrastructure (MX), authoritative nameservers, and SPF/DMARC records.
+                    [cite_start]Identifies email providers (e.g., Google Workspace) and vendor relationships [cite:
+                    39-46].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">02. TECH STACK DETECTION</div>
+                <p>Detects CMS (WordPress, Drupal), JS frameworks, server technologies, and analytics tools.
+                    [cite_start]Helps assess security maturity and potential vulnerabilities [cite: 50-58].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">03. EMPLOYEE INTELLIGENCE</div>
+                <p>Uncovers corporate email patterns (e.g., first.last@) and LinkedIn profiles. [cite_start]Essential
+                    for understanding organizational structure and social engineering vectors [cite: 62-68].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">04. RELATED DOMAINS</div>
+                [cite_start]<p>Finds subdomains, development environments, and sister companies via Certificate
+                    Transparency logs and Reverse WHOIS [cite: 73-82].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">05. HISTORICAL DATA</div>
+                <p>Tracks domain age, ownership history, and DNS changes over time. [cite_start]Helps identify stability
+                    or recent suspicious transfers [cite: 86-94].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">06. GEOLOCATION</div>
+                <p>Pinpoints physical server location, ISP, and data center providers. [cite_start]Detects if "local"
+                    companies are actually hosted offshore [cite: 99-108].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">07. WHOIS DATA</div>
+                <p>Extracts registrant details, expiration dates, and admin contacts. [cite_start]Connects digital
+                    identities to real-world personas [cite: 114-125].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">08. HTTP HEADERS</div>
+                <p>Analyzes server versions and security headers (CSP, HSTS). [cite_start]Reveals misconfigurations and
+                    outdated software [cite: 129-138].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">09. SSL/TLS CERTIFICATES</div>
+                [cite_start]<p>Examines issuers and Subject Alternative Names (SANs) to find hidden related domains on
+                    the same certificate [cite: 144-154].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">10. METADATA & SEO</div>
+                [cite_start]<p>Scrapes meta tags, Open Graph data, and analytics IDs to map business structures and
+                    potential acquisitions [cite: 157-168].</p>
+            </div>
+            <div class="module-item">
+                <div class="module-title">11. CONTACT INTEL</div>
+                [cite_start]<p>Aggregates emails, phones, and social handles (GitHub, Twitter) to map the digital
+                    footprint of the organization [cite: 172-181].</p>
+            </div>
+        </div>
+
+        <h2>3. OPERATIONAL WORKFLOW</h2>
+        <div class="card">
+            <ol style="margin-left: 20px; list-style: decimal;">
+                [cite_start]<li><strong>TARGET IDENTIFICATION:</strong> Enter domain or IP address[cite: 188].</li>
+                [cite_start]<li><strong>MODULE SELECTION:</strong> Choose specific modules or SELECT ALL[cite: 191].
+                </li>
+                [cite_start]<li><strong>INTELLIGENCE COLLECTION:</strong> 11 APIs execute simultaneously in
+                    real-time[cite: 194].</li>
+                [cite_start]<li><strong>DATA AGGREGATION:</strong> Results are unified, correlated, and scored[cite:
+                    198].</li>
+                [cite_start]<li><strong>REPORT GENERATION:</strong> Generates beautiful HTML/PDF reports[cite: 202].
+                </li>
+                [cite_start]<li><strong>EXPORT & DELIVERY:</strong> Share with stakeholders or archive[cite: 206].</li>
+            </ol>
+        </div>
+
+        <h2>4. TECHNICAL ARCHITECTURE</h2>
+        <div class="card">
+            <p><strong>SYSTEM DESIGN:</strong> Modular API Aggregation Pattern.</p>
+            <ul>
+                [cite_start]<li><strong>Frontend:</strong> Vanilla JavaScript (no bloat), CSS3 animations, Responsive
+                    grid [cite: 244-247].</li>
+                [cite_start]<li><strong>API Layer:</strong> 11 separate third-party/public APIs executing in
+                    parallel[cite: 250].</li>
+                <li><strong>Data Processing:</strong> Client-side processing (privacy-first). [cite_start]No data stored
+                    on servers [cite: 255-256].</li>
+            </ul>
+        </div>
+
+        <h2>5. SECURITY & LEGAL FRAMEWORK</h2>
+        <div class="legal-block">
+            <div class="legal-title">⚠️ CRITICAL LEGAL CONSIDERATIONS</div>
+            <p>This tool performs OSINT using publicly available data. Users must have authorization.</p>
+            <br>
+            [cite_start]<strong>LEGAL USES [cite: 266-274]:</strong>
+            <ul>
+                <li>Authorized penetration testing</li>
+                <li>Academic security research</li>
+                <li>Vendor security assessment</li>
+                <li>Incident response investigation</li>
+            </ul>
+            <br>
+            [cite_start]<strong>RESTRICTED USES [cite: 275-281]:</strong>
+            <ul>
+                <li>Unauthorized access attempts</li>
+                <li>Social engineering attacks</li>
+                <li>Harassment or stalking</li>
+            </ul>
+        </div>
+
+        <h2>6. FUTURE ROADMAP</h2>
+        <div class="card">
+            [cite_start]<p><strong>PHASE 2 (Enhanced Intelligence):</strong> Threat intelligence integration, malware
+                database cross-referencing, and historical timeline visualization [cite: 308-309].</p>
+            [cite_start]<p><strong>PHASE 3 (Enterprise):</strong> User accounts, recurring scan automation, and custom
+                module marketplace[cite: 309].</p>
+            [cite_start]<p><strong>PHASE 4 (AI-Powered):</strong> Automated threat assessment, natural language reports,
+                and cross-domain intelligence graphs [cite: 310-311].</p>
+        </div>
+
+        <footer
+            style="margin-top: 50px; text-align: center; opacity: 0.6; font-size: 0.8em; border-top: 1px solid #333; padding-top: 20px;">
+            <p>ADVANCED OSINT RECONNAISSANCE TOOL | [cite_start]AUTHORED BY JALEEL BASHA [cite: 314]</p>
+            <p>Based on the OSINT Playbook Master Guide</p>
+        </footer>
+    </div>
+
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Stars Animation
+        function createStars() {
+            const container = document.getElementById('stars-container');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+
+</html>

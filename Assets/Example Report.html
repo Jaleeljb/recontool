@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Report - https://uksspot.com/</title>
+    <link rel="icon" type="image/png" href="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png">
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #000;
+            border: 2px solid #fff;
+            padding: 40px;
+        }
+        .report-header {
+            text-align: center;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .report-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: block;
+            filter: invert(1);
+        }
+        .report-header h1 {
+            font-size: 32px;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .report-header .subtitle {
+            font-size: 14px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        .scan-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #fff;
+        }
+        .scan-info-item {
+            padding: 10px;
+        }
+        .scan-info-item strong {
+            display: block;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .category-section {
+            margin-bottom: 40px;
+            border: 1px solid #fff;
+            padding: 20px;
+        }
+        .category-title {
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #fff;
+        }
+        .finding-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .finding-item .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .finding-item .item-details {
+            opacity: 0.8;
+            font-size: 14px;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+            color: #fff;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #fff;
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        /* Print styles - KEEP BLACK BACKGROUND */
+        @media print {
+            body { 
+                background: #000 !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .report-container { 
+                border-color: #fff;
+                background: #000 !important;
+            }
+            .category-section, .scan-info { 
+                border-color: #fff;
+                background: #000 !important;
+            }
+            .finding-item { 
+                border-left-color: #fff;
+                background: rgba(255, 255, 255, 0.05) !important;
+            }
+            * {
+                color: #fff !important;
+            }
+            .report-logo {
+                filter: invert(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <div class="report-header">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png" 
+                 alt="OSINT Logo" 
+                 class="report-logo">
+            <h1>WEB RECONNAISSANCE REPORT</h1>
+            <div class="subtitle">OSINT &amp; INFORMATION GATHERING</div>
+        </div>
+        
+        <div class="scan-info">
+            <div class="scan-info-item">
+                <strong>TARGET URL:</strong>
+                https://uksspot.com/
+            </div>
+            <div class="scan-info-item">
+                <strong>SCAN DATE:</strong>
+                20 Nov 2025, 8:06 pm
+            </div>
+            <div class="scan-info-item">
+                <strong>ANALYST:</strong>
+                SHAIK JALEEL BASHA
+            </div>
+            <div class="scan-info-item">
+                <strong>FINDINGS:</strong>
+                64 ITEMS
+            </div>
+        </div>
+        
+        
+            <div class="category-section">
+                <div class="category-title">DNS RECORDS (MX/NS/TXT) (6)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">A Record</div>
+                        <div class="item-details">15.206.117.101 - IPv4 address</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">MX Record</div>
+                        <div class="item-details">10 mx.zoho.in. - Mail server priority 10</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">MX Record</div>
+                        <div class="item-details">20 mx2.zoho.in. - Mail server priority 20</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">MX Record</div>
+                        <div class="item-details">50 mx3.zoho.in. - Mail server priority 50</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Nameserver</div>
+                        <div class="item-details">ns1.secureparkme.com. - Authoritative nameserver</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Nameserver</div>
+                        <div class="item-details">ns2.secureparkme.com. - Authoritative nameserver</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">TECHNOLOGY STACK DETECTION (2)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Framework: jQuery</div>
+                        <div class="item-details">Detected from source code</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Framework: Bootstrap</div>
+                        <div class="item-details">Detected from source code</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">EMPLOYEE INTELLIGENCE (8)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">LinkedIn - Company Search</div>
+                        <div class="item-details">https://www.linkedin.com/search/results/companies/?keywords=UKSSPOT</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">LinkedIn - Company Profile</div>
+                        <div class="item-details">https://linkedin.com/company/uksspot</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Common Formats</div>
+                        <div class="item-details">firstname.lastname@uksspot.com | firstname@uksspot.com | first.last@uksspot.com | f.lastname@uksspot.com | initials@uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Social Media - Twitter</div>
+                        <div class="item-details">https://twitter.com/search?q=uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Social Media - Facebook</div>
+                        <div class="item-details">https://facebook.com/search/pages/?q=UKSSPOT</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Social Media - Instagram</div>
+                        <div class="item-details">https://instagram.com/uksspot</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Social Media - GitHub</div>
+                        <div class="item-details">https://github.com/uksspot</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Company Database - Crunchbase Profile</div>
+                        <div class="item-details">https://www.crunchbase.com/search?query=UKSSPOT</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">RELATED DOMAINS (6)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Reverse WHOIS - Same Registrant Lookup</div>
+                        <div class="item-details">https://viewdns.net/reversewhois/?q=uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Subdomains - Common Patterns</div>
+                        <div class="item-details">uksspot.com, uksspot.io, uksspot.net, uksspot.org, uksspot.co, api.uksspot.com, mail.uksspot.com, admin.uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Archive - Wayback Machine</div>
+                        <div class="item-details">https://web.archive.org/web/*/uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Certificate Search - Certificate Transparency</div>
+                        <div class="item-details">https://crt.sh/?q=%.uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">DNS History - Historical DNS Records</div>
+                        <div class="item-details">https://www.dnshistory.org/dns-records/uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Intelligence - SecurityTrails History</div>
+                        <div class="item-details">https://securitytrails.com/domain/uksspot.com/history</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">HISTORICAL DATA (8)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Registration - DomainTools WHOIS</div>
+                        <div class="item-details">https://whois.domaintools.com/uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Web Archive - Historical Snapshots</div>
+                        <div class="item-details">https://web.archive.org/web/*/uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">DNS - SOA Record</div>
+                        <div class="item-details">Active DNS configuration found</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Registrar - WHOIS.net Lookup</div>
+                        <div class="item-details">https://www.whois.net/?query=uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Ownership - Historical WHOIS</div>
+                        <div class="item-details">https://securitytrails.com/domain/uksspot.com/whois</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">DNS Timeline - IP Address History</div>
+                        <div class="item-details">https://viewdns.net/iphistory/?domain=uksspot.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Infrastructure - DNS History Records</div>
+                        <div class="item-details">https://securitytrails.com/domain/uksspot.com/history/dns</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Reputation - Domain Trust Score</div>
+                        <div class="item-details">Check reputation databases for historical trust metrics</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">GEOLOCATION & IP DETAILS (8)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">IP Address</div>
+                        <div class="item-details">15.206.117.101</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Country</div>
+                        <div class="item-details">India (IN)</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Region</div>
+                        <div class="item-details">Maharashtra</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">City</div>
+                        <div class="item-details">Mumbai</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Coordinates</div>
+                        <div class="item-details">19.0931, 72.9049</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Timezone</div>
+                        <div class="item-details">Asia/Kolkata</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">ISP/Organization</div>
+                        <div class="item-details">AMAZON-02</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">ASN</div>
+                        <div class="item-details">AS16509</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">WHOIS INFORMATION (5)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">registrar</div>
+                        <div class="item-details">Dreamscape Networks International Pte Ltd</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">status</div>
+                        <div class="item-details">active</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">created</div>
+                        <div class="item-details">2022-11-19T05:54:13Z</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">updated</div>
+                        <div class="item-details">2025-11-11T04:19:09Z</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">expires</div>
+                        <div class="item-details">2026-11-19T05:54:13Z</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">HTTP HEADERS ANALYSIS (3)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">content-length</div>
+                        <div class="item-details">12118</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">content-type</div>
+                        <div class="item-details">text/html</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">last-modified</div>
+                        <div class="item-details">Sat, 26 Jul 2025 05:47:15 GMT</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">SSL/TLS CERTIFICATE (4)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">protocol</div>
+                        <div class="item-details">https:</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">secure</div>
+                        <div class="item-details">true</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">note</div>
+                        <div class="item-details">Detailed certificate information requires server-side implementation</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">info</div>
+                        <div class="item-details">Site uses HTTPS encryption</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">METADATA & SEO INFO (8)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Page Title</div>
+                        <div class="item-details">SRI UKS SPOT | LiveRates</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Meta Description</div>
+                        <div class="item-details">No description found</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Meta Keywords</div>
+                        <div class="item-details">No keywords found</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Language</div>
+                        <div class="item-details">en</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Robots</div>
+                        <div class="item-details">Not specified</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Headings</div>
+                        <div class="item-details">H1: 5, H2: 0</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Images</div>
+                        <div class="item-details">21 images found</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Links</div>
+                        <div class="item-details">36 links found</div>
+                    </div>
+                
+            </div>
+        
+            <div class="category-section">
+                <div class="category-title">CONTACT INFORMATION (6)</div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Email</div>
+                        <div class="item-details">uksspot@gmail.com</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Phone</div>
+                        <div class="item-details">+91-9603383838</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Phone</div>
+                        <div class="item-details">1517028608</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Phone</div>
+                        <div class="item-details">+919603383838</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Phone</div>
+                        <div class="item-details">919603383838</div>
+                    </div>
+                
+                    <div class="finding-item">
+                        <div class="item-name">Phone</div>
+                        <div class="item-details">9603383838</div>
+                    </div>
+                
+            </div>
+        
+        
+        <div class="footer">
+            <p>GENERATED BY WEB RECONNAISSANCE TOOL | 20 Nov 2025, 8:06 pm</p>
+            <p>FOR AUTHORIZED SECURITY RESEARCH ONLY</p>
+        </div>
+    </div>
+</body>
+</html>
