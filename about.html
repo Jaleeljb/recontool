@@ -9,7 +9,7 @@
         href="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* REUSING CORE STYLES FROM INDEX.HTML FOR CONSISTENCY */
+        /* CORE STYLES */
         * {
             margin: 0;
             padding: 0;
@@ -59,40 +59,175 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
-        /* HEADER STYLES */
+        /* --- NAVBAR STYLES --- */
         header {
-            text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+            /* Reduced margin to bring video closer */
             border-bottom: 2px solid #fff;
             padding-bottom: 20px;
+            position: relative;
+            z-index: 100;
         }
 
-        .header-content {
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .brand-section {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
+            gap: 20px;
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+            z-index: 101;
         }
 
         .app-logo {
-            width: 80px;
-            height: 80px;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
             filter: invert(1);
+            transition: all 0.3s ease;
+        }
+
+        .header-text {
+            text-align: left;
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             letter-spacing: 2px;
+            line-height: 1.2;
             margin-bottom: 5px;
         }
 
+        .subtitle {
+            font-size: 0.9em;
+            opacity: 0.8;
+            letter-spacing: 2px;
+            color: #0f0;
+        }
+
+        /* DESKTOP NAV MENU */
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-download {
+            border-color: #00ff9d;
+            color: #00ff9d;
+        }
+
+        .btn-download:hover {
+            background: #00ff9d;
+            color: #000;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 2000;
+            width: 30px;
+            height: 25px;
+            position: relative;
+        }
+
+        .bar {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+
+        .bar:nth-child(1) {
+            top: 0;
+        }
+
+        .bar:nth-child(2) {
+            top: 11px;
+        }
+
+        .bar:nth-child(3) {
+            top: 22px;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            top: 11px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            top: 11px;
+            transform: rotate(-45deg);
+        }
+
+        /* --- HERO VIDEO SECTION --- */
+        .hero-video-wrapper {
+            width: 100%;
+            height: 700px;
+            /* Reduced height fixed */
+            margin-bottom: 30px;
+            border: 2px solid #fff;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures video fills the frame like a banner */
+            object-position: center;
+        }
+
+        /* --- PAGE SPECIFIC STYLES --- */
         h2 {
             border-bottom: 1px solid #0f0;
             padding-bottom: 10px;
@@ -112,56 +247,17 @@
             opacity: 0.9;
         }
 
-        /* BUTTONS */
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid #fff;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .nav-btn:hover {
-            background: #fff;
-            color: #000;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        /* VIDEO SECTION */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            /* 16:9 Aspect Ratio */
-            height: 0;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid #fff;
-            margin-bottom: 40px;
-            overflow: hidden;
-        }
-
-        .video-wrapper iframe,
-        .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         /* CONTENT CARDS */
         .card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid #fff;
             padding: 25px;
             margin-bottom: 20px;
+        }
+
+        .card ul,
+        .card ol {
+            margin-left: 20px;
         }
 
         .card ul {
@@ -175,7 +271,7 @@
             position: relative;
         }
 
-        .card li::before {
+        .card ul li::before {
             content: '>';
             position: absolute;
             left: 0;
@@ -219,23 +315,76 @@
             margin-bottom: 10px;
         }
 
-        /* MOBILE RESPONSIVENESS */
-        @media screen and (max-width: 767px) {
-            h1 {
-                font-size: 1.5em;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 10px;
-            }
-
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media screen and (max-width: 900px) {
             .container {
                 padding: 15px;
             }
 
+            .navbar {
+                justify-content: space-between;
+                position: relative;
+            }
+
+            .brand-section {
+                gap: 15px;
+            }
+
+            .app-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .header-text h1 {
+                font-size: 1.4em;
+                letter-spacing: 1px;
+            }
+
+            .subtitle {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                flex-direction: column;
+                background-color: #000;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.4s ease-in-out;
+                justify-content: center;
+                z-index: 1000;
+                border-left: 2px solid #fff;
+                padding: 40px;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 20px;
+                font-size: 1.2em;
+                margin-bottom: 15px;
+                border: none;
+                border-bottom: 1px solid #333;
+            }
+
             .modules-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Mobile Video Height */
+            .hero-video-wrapper {
+                height: 250px;
             }
         }
     </style>
@@ -245,32 +394,55 @@
     <div id="stars-container"></div>
 
     <div class="container">
-        <a href="index.html" class="nav-btn">
-            <i data-lucide="arrow-left"></i> RETURN TO SCANNER
-        </a>
-
         <header>
-            <div class="header-content">
-                <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png"
-                    alt="OSINT Logo" class="app-logo">
-                <div>
-                    <h1>OPERATIONAL PLAYBOOK</h1>
-                    <p>Strategic Guide & Master Manual</p>
+            <nav class="navbar">
+                <div class="brand-section">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png"
+                        alt="OSINT Logo" class="app-logo">
+                    <div class="header-text">
+                        <h1>OPERATIONAL<br>PLAYBOOK</h1>
+                        <p class="subtitle">STRATEGIC GUIDE & MANUAL</p>
+                    </div>
                 </div>
-            </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-btn">
+                        <i data-lucide="arrow-left"></i> RETURN TO SCANNER
+                    </a>
+                    <a href="Assets/OSINT Playbook.pdf" download class="nav-btn btn-download">
+                        <i data-lucide="download"></i> DOWNLOAD PLAYBOOK
+                    </a>
+                    <a href="https://jaleel.vercel.app/" target="_blank" class="nav-btn">
+                        <i data-lucide="user"></i> AUTHOR
+                    </a>
+                    <a href="https://www.linkedin.com/in/jaleel-basha-shaik-6a8056210/" target="_blank" class="nav-btn">
+                        <i data-lucide="linkedin"></i> LINKEDIN
+                    </a>
+                    <a href="https://github.com/Jaleeljb" target="_blank" class="nav-btn">
+                        <i data-lucide="github"></i> GITHUB
+                    </a>
+                </div>
+            </nav>
         </header>
+
+        <!-- HERO VIDEO SECTION (New Location & Styling) -->
+        <div class="hero-video-wrapper">
+            <video controls playsinline poster="">
+                <source src="Assets/About.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
         <div class="card">
             <h3>MISSION BRIEFING</h3>
-            <div class="video-wrapper">
-                <video controls playsinline poster="">
-                    <source src="Assets/About.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
             <p><strong>MISSION OVERVIEW:</strong> We have built a single-interface intelligence aggregation system that
-                transforms raw domain data into actionable reconnaissance intelligence.This
-                isn't just
+                transforms raw domain data into actionable reconnaissance intelligence. This isn't just
                 another WHOIS lookup tool—this is an orchestrated intelligence gathering machine.
             </p>
         </div>
@@ -438,6 +610,20 @@
             }
         }
         createStars();
+
+        // HAMBURGER MENU LOGIC
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-btn").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
     </script>
 </body>
 
