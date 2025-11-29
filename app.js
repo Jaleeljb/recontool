@@ -1165,7 +1165,7 @@ function displayModuleError(moduleId, errorMessage) {
     contentDiv.innerHTML = `<div class="error-message">⚠ ERROR: ${errorMessage}</div>`;
 }
 
-// Export report - FIXED VERSION
+// Export report - FIXED VERSION TO MATCH EXACT EXAMPLE STYLE
 function exportReport() {
     // Validate that scan has been performed
     if (!currentTarget || Object.keys(scanResults).length === 0) {
@@ -1259,7 +1259,7 @@ function exportReport() {
         });
     });
 
-    // Build complete HTML report
+    // Build complete HTML report matching Example Report.html structure and CSS exactly
     const reportHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1268,10 +1268,6 @@ function exportReport() {
     <title>OSINT Report - ${currentTarget}</title>
     <link rel="icon" type="image/png" href="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/042546ac-49bf-4001-91b3-447e6124dfc6.png">
     <style>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 2edd247 (update)
         * { 
             margin: 0; 
             padding: 0; 
@@ -1279,12 +1275,6 @@ function exportReport() {
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-<<<<<<< HEAD
-=======
-        * { margin: 0; padding: 0; box-sizing: border-box; }
->>>>>>> da26d76 (update)
-=======
->>>>>>> 2edd247 (update)
         body {
             font-family: 'Courier New', monospace;
             background: #000;
@@ -1365,16 +1355,8 @@ function exportReport() {
             opacity: 0.8;
             font-size: 14px;
             word-break: break-all;
-<<<<<<< HEAD
-<<<<<<< HEAD
             overflow-wrap: anywhere;
             color: #fff;
-=======
->>>>>>> da26d76 (update)
-=======
-            overflow-wrap: anywhere;
-            color: #fff;
->>>>>>> 2edd247 (update)
         }
         .footer {
             margin-top: 40px;
@@ -1384,8 +1366,6 @@ function exportReport() {
             font-size: 12px;
             opacity: 0.7;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
         /* Print styles - KEEP BLACK BACKGROUND */
         @media print {
             body { 
@@ -1412,41 +1392,6 @@ function exportReport() {
             .report-logo {
                 filter: invert(1);
             }
-=======
-        @media print {
-            body { background: #fff; color: #000; }
-            .report-container { border-color: #000; }
-            .category-section, .scan-info { border-color: #000; }
-            .finding-item { border-left-color: #000; background: #f5f5f5; }
->>>>>>> da26d76 (update)
-=======
-        /* Print styles - KEEP BLACK BACKGROUND */
-        @media print {
-            body { 
-                background: #000 !important;
-                color: #fff !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .report-container { 
-                border-color: #fff;
-                background: #000 !important;
-            }
-            .category-section, .scan-info { 
-                border-color: #fff;
-                background: #000 !important;
-            }
-            .finding-item { 
-                border-left-color: #fff;
-                background: rgba(255, 255, 255, 0.05) !important;
-            }
-            * {
-                color: #fff !important;
-            }
-            .report-logo {
-                filter: invert(1);
-            }
->>>>>>> 2edd247 (update)
         }
     </style>
 </head>
