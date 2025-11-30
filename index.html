@@ -399,6 +399,8 @@
             padding: 10px;
             background: rgba(0, 0, 0, 0.3);
             border-left: 2px solid #555;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .result-label {
@@ -434,11 +436,17 @@
             background: rgba(255, 255, 255, 0.02);
             border-left: 3px solid #0f0;
             padding-left: 12px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .social-link {
             color: #fff;
             text-decoration: underline;
+            display: inline-block;
+            max-width: 100%;
+            word-break: break-all;
+            /* Forces the long URL string to break at any character if it exceeds the container width. */
         }
 
         .social-link:hover {
