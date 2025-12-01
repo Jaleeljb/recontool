@@ -383,8 +383,22 @@
             }
 
             /* Mobile Video Height */
+            /* Inside @media screen and (max-width: 900px) */
+
+            /* Mobile Video Height - UPDATED */
             .hero-video-wrapper {
-                height: 250px;
+                height: auto;
+                /* Allows container to adjust to video size */
+                aspect-ratio: 16/9;
+                /* Maintains standard video proportions */
+                width: 100%;
+                /* Ensures it takes full screen width */
+            }
+
+            /* Add this to prevent the video from zooming/cropping */
+            .hero-video-wrapper video {
+                object-fit: contain;
+                position: relative;
             }
         }
     </style>
