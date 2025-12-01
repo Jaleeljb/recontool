@@ -440,20 +440,9 @@
                 padding: 8px;
             }
 
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .brand {
-                margin-bottom: 10px;
-            }
-
-            /* Increase gap between brand and return link on small screens */
-            header a {
-                margin-top: 5px;
-            }
-
+            /* The default header styles (display: flex, justify-content: space-between) 
+               now correctly align the brand left and the button right. */
+            /* Removed flex-direction: column and align-items: flex-start overrides. */
 
             .upload-zone h3 {
                 font-size: 1em;
@@ -727,7 +716,7 @@
 
                     html += `<div class="hex-offset">${offset}</div>`;
                     html += `<div class="hex-bytes">${hex}</div>`;
-                    // Only include ASCII if not on a small screen
+                    // Only include ASCII if not on a screen smaller than 768px
                     if (!isSmallScreen) {
                         html += `<div class="hex-ascii">${ascii}</div>`;
                     }
